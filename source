@@ -1,0 +1,66 @@
+local Library = loadstring(game:HttpGet("https://raw.githubusercontent.com/xHeptc/Kavo-UI-Library/main/source.lua"))()
+local Window = Library.CreateLib("skitzys hub", "Synapse")
+local Tab = Window:NewTab("player")
+local Section = Tab:NewSection("walkspeed and jump modifications")
+Section:NewSlider("walkspeed set", "Changes ur walkspeed", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.WalkSpeed = s
+end)
+Section:NewSlider("JumpPower", "sets ur jump power", 500, 0, function(s) -- 500 (MaxValue) | 0 (MinValue)
+    game.Players.LocalPlayer.Character.Humanoid.JumpPower = s
+end)
+local Tab = Window:NewTab("Players items")
+local Section = Tab:NewSection("guns giver")
+Section:NewButton("remington giver", "gives u a remington", function(s)
+
+local args = {
+    [1] = workspace.Prison_ITEMS.giver:FindFirstChild("Remington 870").ITEMPICKUP
+}
+
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+
+    print("Clicked")
+end)
+
+Section:NewButton("ak giver", "gives u an ak", function(s)
+local args = {
+    [1] = workspace.Prison_ITEMS.giver:FindFirstChild("AK-47").ITEMPICKUP
+}
+
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+print('clicked')
+end)
+Section:NewButton("m9 giver", "gives u an m9", function(s)
+
+local args = {
+    [1] = workspace.Prison_ITEMS.giver.M9.ITEMPICKUP
+}
+
+workspace.Remote.ItemHandler:InvokeServer(unpack(args))
+
+    print("Clicked")
+end)
+local Tab = Window:NewTab("gun modifications")
+local Section = Tab:NewSection("modify weapons (guns only)")
+Section:NewButton("changes remington firerate to 100", "to lazy", function(v)
+  local plr = game.Players.LocalPlayer
+  
+local gun = plr.Backpack.Remington870.GunStates
+a = require(gun)
+a.Bullets = 100
+    print("Clicked")
+end)
+Section:NewButton("changes glock firerate to 100", "to lazy", function(v)
+  local plr = game.Players.LocalPlayer
+  
+local gun = plr.Backpack.M9.GunStates
+a = require(gun)
+a.Bullets = 100
+    print("Clicked")
+end)
+local Tab = Window:NewTab("Creds")
+local Section = Tab:NewSection("made by skitz")
+local Section = Tab:NewSection("used kavos ui for this script")
+local Section = Tab:NewSection("to lazy to add more features")
+
+
+
